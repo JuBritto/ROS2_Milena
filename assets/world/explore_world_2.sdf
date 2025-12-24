@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.9">
   <!-- ===================================================================== -->
-  <!--  WORLD: cena, física, plugins essenciais                               -->
+  <!--  WORLD: cena, física, plugins essenciais                              -->
   <!-- ===================================================================== -->
   <world name="explore_world">
     <scene>
@@ -35,7 +35,10 @@
         </collision>
         <visual name="visual">
           <geometry>
-            <plane><normal>0 0 1</normal><size>50 50</size></plane>
+            <!-- <plane><normal>0 0 1</normal><size>50 50</size></plane> -->
+            <mesh>
+                <uri>file:///home/julia/ros2_workshop/workshop_assets/assets/FelizNatalMilena.jpeg</uri> 
+            </mesh>
           </geometry>
           <material>
             <ambient>0.1 0.4 0.1 1</ambient>
@@ -49,7 +52,7 @@
     <!-- Obstáculo com COLLISION (o LiDAR enxerga colisão, não o visual) -->
     <model name="box_obstacle">
       <static>true</static>
-      <pose>6 0 0.5 0 0 0</pose> <!-- centro z=0.5; altura=1.0 -->
+      <pose>5 0 0.5 0 0 0</pose> <!-- centro z=0.5; altura=1.0 -->
       <link name="link">
         <collision name="col">
           <geometry><box><size>0.5 0.5 1.0</size></box></geometry>
@@ -61,6 +64,8 @@
       </link>
     </model>
 
+ 
+
     <!-- Luz direcional simples -->
     <light name="sun" type="directional">
       <pose>0 0 10 0 0 0</pose>
@@ -69,7 +74,7 @@
       <specular>0.2 0.2 0.2 1</specular>
       <cast_shadows>true</cast_shadows>
     </light>
-
+    
     <!-- =================================================================== -->
     <!--  ROBÔ DIFFERENTIAL: chassi, rodas, sensores e plugin DiffDrive      -->
     <!-- =================================================================== -->
@@ -115,7 +120,7 @@
                         <topic>imu</topic>
                     </sensor>
 
-                    <sensor name='gpu_lidar' type='gpu_lidar'>"
+                    <sensor name='gpu_lidar' type='gpu_lidar'>
 			<pose relative_to='lidar_frame'>0 0 0 0 0 0</pose>
 		        <topic>/lidar</topic>
 		        <update_rate>10</update_rate>
@@ -387,6 +392,8 @@
             </plugin>
         <!--FIM DOS PLUGINS DO MODELO-->  
         </model>
+
+        
     
     
   </world>

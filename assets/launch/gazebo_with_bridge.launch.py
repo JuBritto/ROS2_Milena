@@ -145,7 +145,7 @@ def generate_launch_description():
         parameters=[nav2_params_file]
     )
 
-    
+        
     #  Return completo (com GPS incluído)
     return LaunchDescription([
         gazebo,

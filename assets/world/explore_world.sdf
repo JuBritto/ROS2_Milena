@@ -8,12 +8,12 @@
     </scene>
     <gravity>0 0 -9.8</gravity>
 
-    <plugin
+<!-- <plugin
   filename="gz-sim-navsat-system"
   name="gz::sim::systems::NavSat">
-</plugin>
+</plugin> -->
 
-...
+<!-- outros elementos omitidos-->
 
 <spherical_coordinates>
   <surface_model>EARTH_WGS84</surface_model>
@@ -33,30 +33,66 @@
       <render_engine>ogre2</render_engine>
     </plugin>
 
-    <plugin filename="libignition-gazebo-navsat-system.so" name="ignition::gazebo::systems::NavSat"/>
+    <!--<plugin filename="libignition-gazebo-navsat-system.so" name="ignition::gazebo::systems::NavSat"/> -->
 
             
             
     <!-- Chão -->
-    <model name="ground_plane">
-      <static>true</static>
-      <link name="link">
-        <collision name="collision">
-          <geometry><plane><normal>0 0 1</normal><size>50 50</size></plane></geometry>
-        </collision>
-        <visual name="visual">
-          <geometry><plane><normal>0 0 1</normal><size>50 50</size></plane></geometry>
-          <material>
-            <ambient>0.1 0.4 0.1 1</ambient>
-            <diffuse>0.1 0.6 0.1 1</diffuse>
-            <specular>0 0 0 1</specular>
-          </material>
-        </visual>
-      </link>
-    </model>
+        <model name="ground_plane">
+  <static>true</static>
 
-    <!-- Obstáculo -->
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <plane>
+          <normal>0 0 1</normal>
+          <size>50 50</size>
+        </plane>
+      </geometry>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <plane>
+          <normal>0 0 1</normal>
+          <size>50 50</size>
+        </plane>
+      </geometry>
+
+      <material>
+        <pbr>
+          <metal>
+            <albedo_map>
+              file:///home/julia/ros2_workshop/workshop_assets/FelizNatalMilena.png  <!-- MILENA JAMAIS ABRA O LINK-->
+            </albedo_map>
+            <roughness>1.0</roughness>
+            <metalness>0.0</metalness>
+          </metal>
+        </pbr>
+      </material>
+
+      <cast_shadows>false</cast_shadows>
+    </visual>
+  </link>
+</model>
+
+
+
+    <!-- Objetivo -->
     <model name="box_obstacle">
+        <static>true</static>
+        <pose>10 0 0.5 0 0 0</pose>
+        <link name="link">
+          <collision name="col"><geometry><box><size>0.5 0.5 1.0</size></box></geometry></collision>
+          <visual name="vis"><geometry><box><size>0.5 0.5 1.0</size></box></geometry><material><diffuse>0 0 1 1</diffuse></material></visual>
+        </link>
+    </model>
+    
+  
+
+
+    <!-- Obstáculo 1 -->
+    <model name="box_1obstacle">
       <static>true</static>
       <pose>5 0 0.5 0 0 0</pose>
       <link name="link">
@@ -64,6 +100,29 @@
         <visual name="vis"><geometry><box><size>0.5 0.5 1.0</size></box></geometry><material><diffuse>1 0 0 1</diffuse></material></visual>
       </link>
     </model>
+  
+    <!-- Obstáculo 2 -->
+    <model name="box_2obstacle">
+      <static>true</static>
+      <pose>0 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.5 0.5 1.0</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.5 0.5 1.0</size></box></geometry><material><diffuse>1 0 0 1</diffuse></material></visual>
+      </link>
+    </model>
+
+
+    <!-- Obstáculo 3 -->
+    <model name="box_3obstacle">
+      <static>true</static>
+      <pose>2 2 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.5 0.5 1.0</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.5 0.5 1.0</size></box></geometry><material><diffuse>1 0 0 1</diffuse></material></visual>
+      </link>
+    </model>
+
+
 
     <!-- Luz -->
     <light name="sun" type="directional">
