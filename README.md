@@ -1,2 +1,3 @@
 # ROS2_Milena
-trabalho da aula de robótica probabilística
+trabalho final da aula de robótica probabilística
+Alunas : Alyssa, Júlia e Anna Clara
